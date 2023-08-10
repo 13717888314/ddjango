@@ -1,0 +1,157 @@
+
+<html lang="zh-CN" style="overflow: hidden; height: 100%; border: none; padding: 0px; margin: 0px;"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>HH</title>
+    <link type="favicon" rel="shortcut icon" href="/static/images/favicon.ico">
+
+    <link type="text/css" rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+
+    <link type="text/css" rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+
+    <link type="text/css" rel="stylesheet" href="/static/plugins/popover/css/jquery.webui-popover.min.css">
+
+
+    <link type="text/css" rel="stylesheet" href="/static/css/dashboard.css">
+
+    <link type="text/css" rel="stylesheet" href="/static/css/common.css">
+
+
+    <script type="text/javascript" src="/static/plugins/jquery/jquery1.11.js"></script>
+
+    <script type="text/javascript" src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/static/plugins/popover/js/jquery.webui-popover.min.js"></script>
+
+    <script type="text/javascript" src="/static/plugins/layui/layer/layer.js"></script><link rel="stylesheet" href="http://192.168.100.122:8091/static/plugins/layui/layer/theme/default/layer.css?v=3.1.1" id="layuicss-layer">
+
+    <script type="text/javascript" src="/static/plugins/layout/jquery-ui-1.11.0.js"></script>
+    <script type="text/javascript" src="/static/plugins/layout/jquery.layout.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/common/common.js"></script>
+    <script type="text/javascript" src="/static/js/common/layers.js"></script>
+    <script type="text/javascript" src="/static/js/modules/common.js"></script>
+    <script type="text/javascript" src="/static/js/modules/main.js"></script>
+</head>
+<body class="ui-layout-container" style="overflow: hidden; width: auto; height: auto; margin: 0px; position: absolute; inset: 0px;">
+<div id="sidebar-wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" aria-label="Expand and Collapse Menu" style="float: left;margin-left: 15px;" onclick="layoutToggle()">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" style="width: 239px; text-align: center;">&nbsp;&nbsp;智为天下（知识库平台）</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-label="Expand and Collapse Menu">
+                    <i class="glyphicon glyphicon-chevron-down" style="color: #fff;"></i>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/"><i class="fa fa-home"></i>&nbsp;主页</a></li>
+                    <li class="active"><a href="/space/index"><i class="fa fa-cube"></i>&nbsp;空间</a></li>
+                    <li><a href="/user/index"><i class="fa fa-user "></i>&nbsp;用户</a></li>
+                    <li><a href="/system/main/index"><i class="fa fa-cog"></i>&nbsp;系统</a></li>
+                </ul>
+                <form class="navbar-form navbar-left visible-md visible-lg" action="#" method="post">
+                    <div class="form-group has-feedback">
+                        <div class="input-group input-group-sm" style="width: 320px">
+                            <input class="form-control input-sm" name="keyword" type="text" onkeydown="KeyDown('#search_btn')" placeholder="请输入关键字搜索...">
+                            <span class="input-group-btn" style="width: 30px">
+                                <button class="btn btn-primary" type="button" name="search" id="search_btn" onclick="mainSearch(this.form, '/main/search')"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                    &nbsp;
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button type="button" onclick="layoutToggle()" class="btn btn-primary"><i class="fa fa-columns"></i></button>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a type="button" data-toggle="web-popover" data-placement="bottom">
+                            <span class="fa fa-question-circle"></span>&nbsp;帮助
+                            <span class="caret"></span>
+                        </a>
+                        <div class="webui-popover-content">
+                            <ul class="dropdown-menu webui-popover-menu">
+                                <li><a href="https://github.com/phachon/mm-wiki/issues" target="_blank"><span class="fa fa-question-circle"></span>&nbsp;问题反馈</a></li>
+                                <li><a href="https://github.com/phachon/mm-wiki" target="_blank"><span class="fa fa-book"></span>&nbsp;在线文档</a></li>
+                                <li><a name="about" data-link="/main/about"><span class="fa fa-send"></span>&nbsp;关于软件</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a type="button" data-toggle="web-popover" data-placement="bottom">
+                            <span class="fa fa-user"></span>&nbsp;root
+                            <span class="caret"></span>
+                        </a>
+                        <div class="webui-popover-content">
+                            <ul class="dropdown-menu webui-popover-menu">
+                                <li><a href="/system/main/index"><span class="glyphicon glyphicon-leaf"></span>&nbsp;个人中心</a></li>
+                                <li><a name="repass" data-link="/system/profile/password"><span class="glyphicon glyphicon-lock"></span>&nbsp;修改密码</a></li>
+                                <li><a href="/author/logout"><span class="glyphicon glyphicon-off"></span>&nbsp;安全退出</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a type="button" data-placement="bottom"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<script type="text/javascript">
+    if (self != top) {
+        parent.location.href = window.location.href
+    }
+    function KeyDown(element) {
+        if (event.keyCode == 13) {
+            event.returnValue = false;
+            event.cancel = true;
+            $(element).click();
+        }
+    }
+    function mainSearch(element, url) {
+        var searchText = $(element).find("input[name='keyword']").val();
+        url = url + "?keyword="+searchText;
+        layer.open({
+            type: 2,
+            skin: Layers.skin,
+            title: '<strong>搜索文档</strong>',
+            shadeClose: true,
+            shade : 0.6,
+            maxmin: true,
+            area: ["1000px", "525px"],
+            content: url,
+            padding:"10px"
+        });
+    }
+    Layers.bindIframe("a[name='repass']", "修改密码", "325px", "800px");
+    Layers.bindIframe("a[name='about']", "关于MM-Wiki", "338px", "600px");
+</script>
+
+<div id="main-left" class="ui-layout-west ui-layout-pane ui-layout-pane-west" style="position: absolute; margin: 0px; inset: 50px auto 0px 0px; height: 678px; z-index: 0; width: 230px; display: none; visibility: visible;">
+    <div class="left-space">
+        <ul class="nav nav-sidebar menu-nav">
+            <li class="active"><a href="/space/list" target="mainFrame"><i class="fa fa-cube" aria-hidden="true"></i>&nbsp;&nbsp;全部空间 <span class="sr-only">(current)</span></a></li>
+            <li><a href="/space/collection" target="mainFrame"><i class="glyphicon glyphicon-star"></i>&nbsp;&nbsp;收藏空间</a></li>
+        </ul>
+    </div>
+    <div class="widget">
+        <h4 class="title">标签</h4>
+        <hr>
+        <div class="content tag-cloud">
+
+        </div>
+    </div>
+</div>
+<iframe class="ui-layout-center ui-layout-pane ui-layout-pane-center" id="mainFrame" name="mainFrame" width="100%" frameborder="0" scrolling="yes" style="overflow-y: auto; position: absolute; margin: 0px; inset: 50px 0px 0px 4px; height: 678px; width: 495px; z-index: 0; display: block; visibility: visible;" src="/space/list"></iframe>
+
+<div id="" class="ui-layout-resizer ui-layout-resizer-west ui-draggable-handle ui-layout-resizer-closed ui-layout-resizer-west-closed ui-draggable-disabled" title="打开侧栏" style="position: absolute; padding: 0px; margin: 0px; font-size: 1px; text-align: left; overflow: hidden; z-index: 2; cursor: pointer; left: 0px; height: 678px; width: 4px; top: 50px;"><div id="" class="ui-layout-toggler ui-layout-toggler-west ui-layout-toggler-closed ui-layout-toggler-west-closed" title="打开侧栏" style="position: absolute; display: block; padding: 0px; margin: 0px; overflow: hidden; text-align: center; font-size: 1px; cursor: pointer; z-index: 1; visibility: visible; height: 50px; width: 4px; top: 314px; left: 0px;"></div></div></body><div id="qbTrans-pageTrans-dialog" style="display: none;"><span class="qbTrans-pageTrans-dialog-success" style="display: none;"></span> <span class="qbTrans-pageTrans-dialog-guide" style="display: none;"></span> <span class="qbTrans-pageTrans-dialog-text">是否将当前网页翻译成中文</span> <div id="qbTrans-pageTrans-dialog-btn" class="qbTrans-pageTrans-dialog-btn">网页翻译</div> <!----> <!----> <!----> <div class="qbTrans-pageTrans-dialog-close"><span class="qbTrans-pageTrans-dialog-close-text">关闭</span></div></div></html>
